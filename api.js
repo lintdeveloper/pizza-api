@@ -3,6 +3,7 @@ const Api = require('claudia-api-builder');
 const api = new Api();
 const getPizzas = require('./handlers/get-pizzas');
 const createOrders = require('./handlers/create-order');
+const updateOrder = require('./handlers/update-order');
 
 api.get('/', ()=> 'Welcome to Pizza API');
 
@@ -21,6 +22,13 @@ api.post('/orders', (request) => {
 }, {
     success: 201,
     error: 400
-})
+});
+
+api.put('/orders/{id}', (request) =>{
+    return updateOrder(request.pathParams.id, request.body);
+}, {
+    success: 201,
+    error: 400
+});
 
 module.exports = api;
