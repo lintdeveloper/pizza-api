@@ -24,7 +24,3 @@ api.post('/orders', (request) => {
 })
 
 module.exports = api;
-
-
-
-module.exports = api;
